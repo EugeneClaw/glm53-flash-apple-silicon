@@ -1,0 +1,227 @@
+{
+ "experiment": "E-053b",
+ "date": "2026-09-25",
+ "target": "GLM-m48 greedy 64-token gens from /tmp/e053/server_gens.json (server :8008, E-053)",
+ "drafter": "<studio-path> (1-layer MTP, canonical Glm5NextMTPBlock)",
+ "method": {
+  "trunk_load": "omlx server recipe: maybe_apply_pre_load_patches(for_vlm=True) + format-marker strip (sanitize active) + mlx_vlm load_model(lazy=True) + chunked mx.eval (10-layer groups) of language_model only; server was STOPPED (solo GPU)",
+  "h_prev": "TRUE pre-final-norm trunk hidden from lm.model(inputs, cache, return_raw_hidden=True), last position; chained head hiddens thereafter (mtp_forward contract, glm5_next_vlm_runtime.py:761)",
+  "head": "Glm5NextMTPBlock attached post-load; all 29 drafter tensors mapped (enorm/hnorm/eh_proj direct, shared_head_norm->norm, rest under block.*)",
+  "scoring": "identical to E-053 score.py: server text retokenized, positional agreement over min(len)"
+ },
+ "memory": {
+  "after_lazy_build_GB": 0.0,
+  "after_chunked_materialization_GB": 182.38,
+  "peak_during_generation_GB": 186.72,
+  "metal_wired_limit_mb": 0,
+  "machine_total_RAM_GB": 256
+ },
+ "results": {
+  "per_prompt": [
+   {
+    "id": 1,
+    "category": "chit-chat",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 2,
+    "category": "chit-chat",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 3,
+    "category": "technical",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 4,
+    "category": "technical",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 5,
+    "category": "code",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 6,
+    "category": "code",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 7,
+    "category": "summarization",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 8,
+    "category": "summarization",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 9,
+    "category": "creative",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 10,
+    "category": "creative",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 11,
+    "category": "chit-chat",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.5,
+    "agr_1_8": 0.375,
+    "agr_1_16": 0.1875,
+    "agr_1_32": 0.09375,
+    "agr_1_64": 0.046875
+   },
+   {
+    "id": 12,
+    "category": "technical",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 13,
+    "category": "code",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 14,
+    "category": "summarization",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 15,
+    "category": "creative",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   },
+   {
+    "id": 16,
+    "category": "technical",
+    "n_server_tokens": 65,
+    "n_server_from_log": 64,
+    "pos1": 0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   }
+  ],
+  "summary": {
+   "pos1": 0.0,
+   "pos1_2": 0.03125,
+   "agr_1_8": 0.0234375,
+   "agr_1_16": 0.01171875,
+   "agr_1_32": 0.005859375,
+   "agr_1_64": 0.0029296875
+  }
+ },
+ "verdict_rule": "pos1-2 >= 0.55 GO / 0.40-0.55 MARGINAL / < 0.40 CLOSE-PATH-A-CONFIRMED (E-053b brief)",
+ "pos2_primary": 0.03125,
+ "pos1_primary": 0.0,
+ "VERDICT": "CLOSE-PATH-A-CONFIRMED"
+}

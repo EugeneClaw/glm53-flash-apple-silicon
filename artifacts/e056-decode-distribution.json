@@ -1,0 +1,428 @@
+{
+ "launch1": [
+  {
+   "rep": 0,
+   "ctx": "short",
+   "salt": 5600001,
+   "decode": 39.45,
+   "ttft": 1.08
+  },
+  {
+   "rep": 0,
+   "ctx": "mid",
+   "salt": 5600002,
+   "decode": 33.77,
+   "ttft": 8.71
+  },
+  {
+   "rep": 1,
+   "ctx": "short",
+   "salt": 5600003,
+   "decode": 39.45,
+   "ttft": 1.11
+  },
+  {
+   "rep": 1,
+   "ctx": "mid",
+   "salt": 5600004,
+   "decode": 22.65,
+   "ttft": 8.66
+  },
+  {
+   "rep": 2,
+   "ctx": "short",
+   "salt": 5600005,
+   "decode": 39.51,
+   "ttft": 1.11
+  },
+  {
+   "rep": 2,
+   "ctx": "mid",
+   "salt": 5600006,
+   "decode": 27.38,
+   "ttft": 8.73
+  },
+  {
+   "rep": 3,
+   "ctx": "short",
+   "salt": 5600007,
+   "decode": 39.51,
+   "ttft": 2.52
+  },
+  {
+   "rep": 3,
+   "ctx": "mid",
+   "salt": 5600008,
+   "decode": 26.98,
+   "ttft": 8.64
+  },
+  {
+   "rep": 4,
+   "ctx": "short",
+   "salt": 5600009,
+   "decode": 25.75,
+   "ttft": 1.08
+  },
+  {
+   "rep": 4,
+   "ctx": "mid",
+   "salt": 5600010,
+   "decode": 33.73,
+   "ttft": 8.66
+  },
+  {
+   "rep": 5,
+   "ctx": "short",
+   "salt": 5600011,
+   "decode": 39.38,
+   "ttft": 1.06
+  },
+  {
+   "rep": 5,
+   "ctx": "mid",
+   "salt": 5600012,
+   "decode": 33.64,
+   "ttft": 8.65
+  },
+  {
+   "rep": 6,
+   "ctx": "short",
+   "salt": 5600013,
+   "decode": 31.11,
+   "ttft": 1.07
+  },
+  {
+   "rep": 6,
+   "ctx": "mid",
+   "salt": 5600014,
+   "decode": 27.56,
+   "ttft": 8.75
+  },
+  {
+   "rep": 7,
+   "ctx": "short",
+   "salt": 5600015,
+   "decode": 39.32,
+   "ttft": 1.1
+  },
+  {
+   "rep": 7,
+   "ctx": "mid",
+   "salt": 5600016,
+   "decode": 33.55,
+   "ttft": 8.68
+  },
+  {
+   "rep": 8,
+   "ctx": "short",
+   "salt": 5600017,
+   "decode": 39.26,
+   "ttft": 4.23
+  },
+  {
+   "rep": 8,
+   "ctx": "mid",
+   "salt": 5600018,
+   "decode": 27.56,
+   "ttft": 8.63
+  },
+  {
+   "rep": 9,
+   "ctx": "short",
+   "salt": 5600019,
+   "decode": 39.2,
+   "ttft": 1.08
+  },
+  {
+   "rep": 9,
+   "ctx": "mid",
+   "salt": 5600020,
+   "decode": 33.46,
+   "ttft": 8.69
+  }
+ ],
+ "launch2": [
+  {
+   "rep": 0,
+   "ctx": "short",
+   "salt": 5600021,
+   "decode": 39.57,
+   "ttft": 0.82
+  },
+  {
+   "rep": 0,
+   "ctx": "mid",
+   "salt": 5600022,
+   "decode": 33.73,
+   "ttft": 9.38
+  },
+  {
+   "rep": 1,
+   "ctx": "short",
+   "salt": 5600023,
+   "decode": 39.38,
+   "ttft": 1.11
+  },
+  {
+   "rep": 1,
+   "ctx": "mid",
+   "salt": 5600024,
+   "decode": 33.73,
+   "ttft": 8.73
+  },
+  {
+   "rep": 2,
+   "ctx": "short",
+   "salt": 5600025,
+   "decode": 39.26,
+   "ttft": 4.2
+  },
+  {
+   "rep": 2,
+   "ctx": "mid",
+   "salt": 5600026,
+   "decode": 33.6,
+   "ttft": 8.63
+  },
+  {
+   "rep": 3,
+   "ctx": "short",
+   "salt": 5600027,
+   "decode": 39.14,
+   "ttft": 1.08
+  },
+  {
+   "rep": 3,
+   "ctx": "mid",
+   "salt": 5600028,
+   "decode": 27.29,
+   "ttft": 8.69
+  },
+  {
+   "rep": 4,
+   "ctx": "short",
+   "salt": 5600029,
+   "decode": 39.32,
+   "ttft": 4.11
+  },
+  {
+   "rep": 4,
+   "ctx": "mid",
+   "salt": 5600030,
+   "decode": 33.6,
+   "ttft": 8.61
+  },
+  {
+   "rep": 5,
+   "ctx": "short",
+   "salt": 5600031,
+   "decode": 31.64,
+   "ttft": 1.1
+  },
+  {
+   "rep": 5,
+   "ctx": "mid",
+   "salt": 5600032,
+   "decode": 27.21,
+   "ttft": 8.72
+  },
+  {
+   "rep": 6,
+   "ctx": "short",
+   "salt": 5600033,
+   "decode": 26.53,
+   "ttft": 1.09
+  },
+  {
+   "rep": 6,
+   "ctx": "mid",
+   "salt": 5600034,
+   "decode": 27.56,
+   "ttft": 8.65
+  },
+  {
+   "rep": 7,
+   "ctx": "short",
+   "salt": 5600035,
+   "decode": 39.2,
+   "ttft": 1.1
+  },
+  {
+   "rep": 7,
+   "ctx": "mid",
+   "salt": 5600036,
+   "decode": 33.51,
+   "ttft": 8.69
+  },
+  {
+   "rep": 8,
+   "ctx": "short",
+   "salt": 5600037,
+   "decode": 39.26,
+   "ttft": 2.58
+  },
+  {
+   "rep": 8,
+   "ctx": "mid",
+   "salt": 5600038,
+   "decode": 33.6,
+   "ttft": 8.7
+  },
+  {
+   "rep": 9,
+   "ctx": "short",
+   "salt": 5600039,
+   "decode": 39.14,
+   "ttft": 1.09
+  },
+  {
+   "rep": 9,
+   "ctx": "mid",
+   "salt": 5600040,
+   "decode": 33.6,
+   "ttft": 8.69
+  }
+ ],
+ "launch3": [
+  {
+   "rep": 0,
+   "ctx": "short",
+   "salt": 5600041,
+   "decode": 39.38,
+   "ttft": 0.8
+  },
+  {
+   "rep": 0,
+   "ctx": "mid",
+   "salt": 5600042,
+   "decode": 33.77,
+   "ttft": 9.34
+  },
+  {
+   "rep": 1,
+   "ctx": "short",
+   "salt": 5600043,
+   "decode": 26.2,
+   "ttft": 2.56
+  },
+  {
+   "rep": 1,
+   "ctx": "mid",
+   "salt": 5600044,
+   "decode": 33.68,
+   "ttft": 8.74
+  },
+  {
+   "rep": 2,
+   "ctx": "short",
+   "salt": 5600045,
+   "decode": 39.38,
+   "ttft": 1.07
+  },
+  {
+   "rep": 2,
+   "ctx": "mid",
+   "salt": 5600046,
+   "decode": 33.73,
+   "ttft": 8.69
+  },
+  {
+   "rep": 3,
+   "ctx": "short",
+   "salt": 5600047,
+   "decode": 39.38,
+   "ttft": 2.76
+  },
+  {
+   "rep": 3,
+   "ctx": "mid",
+   "salt": 5600048,
+   "decode": 33.73,
+   "ttft": 8.74
+  },
+  {
+   "rep": 4,
+   "ctx": "short",
+   "salt": 5600049,
+   "decode": 39.45,
+   "ttft": 2.46
+  },
+  {
+   "rep": 4,
+   "ctx": "mid",
+   "salt": 5600050,
+   "decode": 27.62,
+   "ttft": 8.68
+  },
+  {
+   "rep": 5,
+   "ctx": "short",
+   "salt": 5600051,
+   "decode": 39.32,
+   "ttft": 1.2
+  },
+  {
+   "rep": 5,
+   "ctx": "mid",
+   "salt": 5600052,
+   "decode": 27.5,
+   "ttft": 8.71
+  },
+  {
+   "rep": 6,
+   "ctx": "short",
+   "salt": 5600053,
+   "decode": 39.38,
+   "ttft": 1.06
+  },
+  {
+   "rep": 6,
+   "ctx": "mid",
+   "salt": 5600054,
+   "decode": 33.68,
+   "ttft": 8.69
+  },
+  {
+   "rep": 7,
+   "ctx": "short",
+   "salt": 5600055,
+   "decode": 31.14,
+   "ttft": 2.71
+  },
+  {
+   "rep": 7,
+   "ctx": "mid",
+   "salt": 5600056,
+   "decode": 33.77,
+   "ttft": 10.8
+  },
+  {
+   "rep": 8,
+   "ctx": "short",
+   "salt": 5600057,
+   "decode": 39.32,
+   "ttft": 4.15
+  },
+  {
+   "rep": 8,
+   "ctx": "mid",
+   "salt": 5600058,
+   "decode": 33.64,
+   "ttft": 8.72
+  },
+  {
+   "rep": 9,
+   "ctx": "short",
+   "salt": 5600059,
+   "decode": 39.32,
+   "ttft": 1.09
+  },
+  {
+   "rep": 9,
+   "ctx": "mid",
+   "salt": 5600060,
+   "decode": 33.68,
+   "ttft": 8.63
+  }
+ ]
+}

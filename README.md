@@ -36,6 +36,18 @@ arithmetic, summarization at parity; exhaustive fact-recall slightly reduced)
 Decode was investigated across three serving engines; findings and the
 honest bandwidth/latency analysis are in [docs/DECODE.md](docs/DECODE.md).
 
+## Minimum performance targets (competitive bars)
+
+These are the bars this project set for "worth shipping" — stated so others
+can judge the result against the same yardstick:
+
+- **Prefill: ≥ ~1,584 tok/s** at ~24K context (the 2× DGX Spark reference pace)
+- **Decode: ≥ ~60–62 tok/s** (parity with competitive serving on this model class)
+
+Prefill clears its bar with ~30% margin in SpecPrefill mode (and meets it
+neither-mode at 16K). **Decode does not clear its bar** — see Known
+limitations and BENCHMARKS.md for the honest numbers.
+
 ## What's in here
 
 - **[LEDGER.md](LEDGER.md)** — the full experiment log (E-001…E-045): every hypothesis, measurement, verdict, and artifact reference. The interesting part is the *failed* experiments: two fusion programs (single-GEMM rewrite, fused norm kernels) were proven numerically perfect and 3–6× faster in isolation, yet **measurably neutral end-to-end** — the receipts explain why, and that explanation is the most valuable thing in this repo.
@@ -52,6 +64,22 @@ honest bandwidth/latency analysis are in [docs/DECODE.md](docs/DECODE.md).
 3. **Dispatch-count ≠ GPU-time.** One component was 41% of all Python dispatches and ~3% of GPU time. Both a single-GEMM rewrite and fused norm kernels were proven equivalent (max diff ≤3e-5) and 3–6× faster per call, then measured **neutral end-to-end** — because the wall is per-op *serial execution premium* (~1.16 ms/kernel-equivalent), not per-op count. (E-030/E-031/E-033/E-037)
 4. **A per-chunk `mx.clear_cache()` in a draft-model loop cost 130×** under memory pressure — the same lesson the target model's scheduler had already learned, unapplied to the draft path. Fixing it plus skipping a discarded full-vocab head projection turned a bimodal 0.4 s ↔ 73 s scorer into a flat ~0.6–1.7 s one. (E-031b/E-038)
 5. **Speculative-prefill quality is task-shaped**: agent-relevant tasks (tool calls, code edits, arithmetic) at exact parity; exhaustive long-context fact recall is where a 60%-token approximation pays. Gate your own workload before adopting. (E-040)
+
+## Known limitations
+
+- **Decode is below the 60–62 tok/s target**: ~39 tok/s short-context
+  (clean-state baseline), ~33.7 tok/s at ~9K context, ~31–32 at ~27K.
+  Measured across three serving engines; the bandwidth-physics ceiling and
+  the open paths are analyzed in [docs/DECODE.md](docs/DECODE.md).
+- **Decode is bimodal at ctx > 2K**: requests land in a fast tier
+  (33.5–33.8 tok/s) or a slow tier (23–28 tok/s) — a per-request gate on
+  the sparse-attention decode path, characterized but mechanism unresolved.
+- **SpecPrefill is approximate**: 0.94 relative quality vs full fidelity;
+  exhaustive long-context fact recall is where the 60%-token budget shows.
+  First use of the draft scorer after a cold start pays ~60 s one-time.
+- **Mixed-4/8-bit checkpoint**: results are for this quantization; other
+  quants will differ (a Q4_K GGUF lineage measured −1.0 quality on a
+  scoring rubric in side testing).
 
 ## Hardware/software context for reproduction
 

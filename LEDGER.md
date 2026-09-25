@@ -10,6 +10,8 @@
 > all preserved; where a receipt was lost, the audit trail says so (see the
 > audit entry). The benchmark scripts in `scripts/` regenerate the key
 > measurements.
+> Note: E-013, E-015 and E-016 have no standalone entries; their work is described
+> inside E-019, E-022 and ROOT-CAUSES.md (RC-2).
 
 # GLM-5.3-Flash Prefill Mission — Engineering Ledger
 

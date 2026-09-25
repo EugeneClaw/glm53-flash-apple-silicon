@@ -1,0 +1,4611 @@
+{
+ "meta": {
+  "model": "/private/tmp/serve-m48/GLM-m48",
+  "lazy": true,
+  "num_layers": 45,
+  "kda_layers": [
+   0,
+   1,
+   2,
+   4,
+   5,
+   6,
+   8,
+   9,
+   10,
+   12,
+   13,
+   14,
+   16,
+   17,
+   18,
+   20,
+   21,
+   22,
+   24,
+   25,
+   26,
+   28,
+   29,
+   30,
+   32,
+   33,
+   34,
+   36,
+   37,
+   38,
+   40,
+   41,
+   42,
+   44
+  ],
+  "full_layers": [
+   3,
+   7,
+   11,
+   15,
+   19,
+   23,
+   27,
+   31,
+   35,
+   39,
+   43
+  ],
+  "dense_mlp": [
+   0,
+   1,
+   2
+  ]
+ },
+ "d256nb": {
+  "agg": {
+   "take": [
+    3,
+    1152,
+    178421760
+   ],
+   "dequantize": [
+    1,
+    4096,
+    1024
+   ],
+   "slice": [
+    124,
+    4325632,
+    6605824
+   ],
+   "broadcast_to": [
+    1,
+    16384,
+    4096
+   ],
+   "contiguous": [
+    35,
+    2523136,
+    2523136
+   ],
+   "astype": [
+    317,
+    2691328,
+    2691328
+   ],
+   "flatten": [
+    45,
+    737280,
+    737280
+   ],
+   "fast:rms_norm": [
+    113,
+    948224,
+    0
+   ],
+   "transpose": [
+    67,
+    18055168,
+    18055168
+   ],
+   "matmul": [
+    56,
+    2488,
+    782336
+   ],
+   "kernel:hc_sinkhorn_collapse": [
+    45,
+    185220,
+    0
+   ],
+   "quantized_matmul": [
+    225,
+    2532608,
+    1320448
+   ],
+   "split": [
+    68,
+    1682048,
+    1682048
+   ],
+   "concatenate": [
+    90,
+    7061504,
+    0
+   ],
+   "conv1d": [
+    34,
+    835584,
+    3342336
+   ],
+   "compiled:silu": [
+    34,
+    0,
+    0
+   ],
+   "reshape": [
+    316,
+    2358784,
+    2358784
+   ],
+   "multiply": [
+    306,
+    2506752,
+    2232576
+   ],
+   "sum": [
+    68,
+    4352,
+    557056
+   ],
+   "add": [
+    102,
+    6528,
+    6528
+   ],
+   "rsqrt": [
+    102,
+    6528,
+    6528
+   ],
+   "sigmoid": [
+    68,
+    280704,
+    280704
+   ],
+   "compiled:compute_g_safe": [
+    34,
+    0,
+    0
+   ],
+   "kernel:gated_delta_step_vec": [
+    34,
+    35930112,
+    0
+   ],
+   "mean": [
+    35,
+    6272,
+    294912
+   ],
+   "compiled:_hc_expand_op": [
+    45,
+    0,
+    0
+   ],
+   "compiled:_ffn_block": [
+    45,
+    0,
+    0
+   ],
+   "expand_dims": [
+    11,
+    5632,
+    5632
+   ],
+   "zeros": [
+    66,
+    1441792,
+    0
+   ],
+   "slice_update": [
+    44,
+    8448,
+    2894848
+   ],
+   "fast:layer_norm": [
+    11,
+    1408,
+    0
+   ],
+   "swapaxes": [
+    11,
+    5767168,
+    5767168
+   ],
+   "full": [
+    11,
+    11,
+    0
+   ],
+   "ones": [
+    11,
+    11,
+    0
+   ],
+   "depends": [
+    11,
+    2883584,
+    2883584
+   ],
+   "fast:scaled_dot_product_attention": [
+    11,
+    360448,
+    0
+   ]
+  },
+  "sites": {
+   "take|quantized.py:__call__:147": 1,
+   "take|quantized.py:__call__:148": 1,
+   "take|quantized.py:__call__:149": 1,
+   "dequantize|quantized.py:__call__:146": 1,
+   "slice|language.py:__call__:951": 1,
+   "broadcast_to|language.py:__call__:950": 1,
+   "contiguous|language.py:__call__:953": 1,
+   "astype|hyper_connection.py:__call__:275": 45,
+   "flatten|hyper_connection.py:__call__:276": 45,
+   "fast:rms_norm|hyper_connection.py:__call__:276": 45,
+   "transpose|hyper_connection.py:_mix:270": 45,
+   "matmul|hyper_connection.py:_mix:270": 45,
+   "kernel:hc_sinkhorn_collapse|hyper_connection.py:_hc_kernel:170": 45,
+   "fast:rms_norm|normalization.py:__call__:148": 68,
+   "quantized_matmul|linear.py:fused_quantized_matmul:105": 34,
+   "split|language.py:_fused_in_proj:260": 34,
+   "concatenate|language.py:__call__:274": 34,
+   "concatenate|language.py:__call__:291": 34,
+   "slice|language.py:__call__:305": 34,
+   "contiguous|language.py:__call__:305": 34,
+   "conv1d|convolution.py:__call__:78": 34,
+   "compiled:silu|language.py:__call__:306": 34,
+   "split|language.py:__call__:308": 34,
+   "reshape|language.py:__call__:309": 34,
+   "reshape|language.py:__call__:310": 34,
+   "reshape|language.py:__call__:311": 34,
+   "quantized_matmul|quantized.py:__call__:266": 169,
+   "reshape|language.py:__call__:314": 34,
+   "astype|language.py:__call__:324": 68,
+   "multiply|language.py:_l2norm:140": 136,
+   "sum|language.py:_l2norm:140": 68,
+   "add|language.py:_l2norm:140": 68,
+   "rsqrt|language.py:_l2norm:140": 68,
+   "multiply|language.py:__call__:324": 34,
+   "astype|language.py:__call__:325": 68,
+   "reshape|language.py:__call__:335": 34,
+   "reshape|language.py:__call__:336": 34,
+   "sigmoid|gated_delta.py:gated_delta_update:284": 34,
+   "compiled:compute_g_safe|gated_delta.py:gated_delta_update:288": 34,
+   "kernel:gated_delta_step_vec|gated_delta.py:gated_delta_kernel:206": 34,
+   "reshape|language.py:__call__:345": 34,
+   "astype|language.py:__call__:106": 34,
+   "multiply|language.py:__call__:107": 34,
+   "mean|language.py:__call__:107": 34,
+   "add|language.py:__call__:108": 34,
+   "rsqrt|language.py:__call__:108": 34,
+   "multiply|language.py:__call__:108": 34,
+   "astype|language.py:__call__:109": 34,
+   "multiply|language.py:__call__:109": 34,
+   "astype|language.py:__call__:110": 34,
+   "sigmoid|language.py:__call__:110": 34,
+   "multiply|language.py:__call__:110": 34,
+   "astype|language.py:__call__:111": 34,
+   "reshape|language.py:__call__:352": 34,
+   "compiled:_hc_expand_op|hyper_connection.py:hc_expand:311": 45,
+   "compiled:_ffn_block|language.py:__call__:908": 45,
+   "reshape|language.py:__call__:626": 11,
+   "transpose|language.py:__call__:626": 11,
+   "expand_dims|language.py:__call__:630": 11,
+   "zeros|language.py:__call__:636": 11,
+   "zeros|cache.py:update_and_fetch:517": 11,
+   "zeros|cache.py:update_and_fetch:518": 11,
+   "concatenate|cache.py:update_and_fetch:523": 11,
+   "concatenate|cache.py:update_and_fetch:524": 11,
+   "slice_update|cache.py:update_and_fetch:529": 11,
+   "slice_update|cache.py:update_and_fetch:530": 11,
+   "slice|cache.py:update_and_fetch:531": 22,
+   "reshape|language.py:__call__:458": 11,
+   "fast:layer_norm|normalization.py:__call__:115": 11,
+   "reshape|language.py:__call__:459": 11,
+   "swapaxes|language.py:__call__:460": 11,
+   "matmul|language.py:__call__:460": 11,
+   "slice|cache_extras.py:pooled:78": 44,
+   "slice_update|cache_extras.py:accumulate_windows:196": 11,
+   "slice_update|cache_extras.py:accumulate_windows:197": 11,
+   "zeros|cache_extras.py:accumulate_windows:205": 11,
+   "zeros|cache_extras.py:accumulate_windows:206": 11,
+   "zeros|language.py:_compress_windows:381": 11,
+   "full|language.py:__call__:482": 11,
+   "ones|language.py:__call__:483": 11,
+   "slice|cache_extras.py:state:249": 11,
+   "slice|cache_extras.py:state:250": 11,
+   "depends|language.py:__call__:733": 11,
+   "quantized_matmul|mla.py:__call__:76": 22,
+   "fast:scaled_dot_product_attention|base.py:scaled_dot_product_attention:418": 11,
+   "transpose|language.py:__call__:751": 11,
+   "reshape|language.py:__call__:751": 11,
+   "mean|language.py:__call__:959": 1,
+   "slice|language.py:__call__:988": 1
+  },
+  "n_events": 2600,
+  "events_truncated": false,
+  "layer_ranges": {
+   "0": [
+    7,
+    66
+   ],
+   "1": [
+    66,
+    125
+   ],
+   "2": [
+    125,
+    184
+   ],
+   "3": [
+    184,
+    237
+   ],
+   "4": [
+    237,
+    296
+   ],
+   "5": [
+    296,
+    355
+   ],
+   "6": [
+    355,
+    414
+   ],
+   "7": [
+    414,
+    467
+   ],
+   "8": [
+    467,
+    526
+   ],
+   "9": [
+    526,
+    585
+   ],
+   "10": [
+    585,
+    644
+   ],
+   "11": [
+    644,
+    697
+   ],
+   "12": [
+    697,
+    756
+   ],
+   "13": [
+    756,
+    815
+   ],
+   "14": [
+    815,
+    874
+   ],
+   "15": [
+    874,
+    927
+   ],
+   "16": [
+    927,
+    986
+   ],
+   "17": [
+    986,
+    1045
+   ],
+   "18": [
+    1045,
+    1104
+   ],
+   "19": [
+    1104,
+    1157
+   ],
+   "20": [
+    1157,
+    1216
+   ],
+   "21": [
+    1216,
+    1275
+   ],
+   "22": [
+    1275,
+    1334
+   ],
+   "23": [
+    1334,
+    1387
+   ],
+   "24": [
+    1387,
+    1446
+   ],
+   "25": [
+    1446,
+    1505
+   ],
+   "26": [
+    1505,
+    1564
+   ],
+   "27": [
+    1564,
+    1617
+   ],
+   "28": [
+    1617,
+    1676
+   ],
+   "29": [
+    1676,
+    1735
+   ],
+   "30": [
+    1735,
+    1794
+   ],
+   "31": [
+    1794,
+    1847
+   ],
+   "32": [
+    1847,
+    1906
+   ],
+   "33": [
+    1906,
+    1965
+   ],
+   "34": [
+    1965,
+    2024
+   ],
+   "35": [
+    2024,
+    2077
+   ],
+   "36": [
+    2077,
+    2136
+   ],
+   "37": [
+    2136,
+    2195
+   ],
+   "38": [
+    2195,
+    2254
+   ],
+   "39": [
+    2254,
+    2307
+   ],
+   "40": [
+    2307,
+    2366
+   ],
+   "41": [
+    2366,
+    2425
+   ],
+   "42": [
+    2425,
+    2484
+   ],
+   "43": [
+    2484,
+    2537
+   ],
+   "44": [
+    2537,
+    2596
+   ]
+  },
+  "ev_L0": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L0/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L0/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L0/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L0/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L0/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L0/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L0"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L0/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L0/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L0/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L0/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L0/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L0/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L0/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L0/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L0/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L0"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L0"
+   ]
+  ],
+  "ev_L3": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L3/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L3/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L3/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L3/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L3/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L3/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:626",
+    "L3/attn:dsa"
+   ],
+   [
+    "transpose",
+    "language.py:__call__:626",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3/attn:dsa"
+   ],
+   [
+    "expand_dims",
+    "language.py:__call__:630",
+    "L3/attn:dsa"
+   ],
+   [
+    "zeros",
+    "language.py:__call__:636",
+    "L3/attn:dsa"
+   ],
+   [
+    "zeros",
+    "cache.py:update_and_fetch:517",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "zeros",
+    "cache.py:update_and_fetch:518",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "concatenate",
+    "cache.py:update_and_fetch:523",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "concatenate",
+    "cache.py:update_and_fetch:524",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice_update",
+    "cache.py:update_and_fetch:529",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice_update",
+    "cache.py:update_and_fetch:530",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice",
+    "cache.py:update_and_fetch:531",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice",
+    "cache.py:update_and_fetch:531",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:458",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "fast:layer_norm",
+    "normalization.py:__call__:115",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:459",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "swapaxes",
+    "language.py:__call__:460",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "matmul",
+    "language.py:__call__:460",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "slice_update",
+    "cache_extras.py:accumulate_windows:196",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "slice_update",
+    "cache_extras.py:accumulate_windows:197",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "cache_extras.py:accumulate_windows:205",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "cache_extras.py:accumulate_windows:206",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "language.py:_compress_windows:381",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa/indexer/pool_fetch"
+   ],
+   [
+    "full",
+    "language.py:__call__:482",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "ones",
+    "language.py:__call__:483",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:state:249",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:state:250",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa"
+   ],
+   [
+    "depends",
+    "language.py:__call__:733",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "mla.py:__call__:76",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:scaled_dot_product_attention",
+    "base.py:scaled_dot_product_attention:418",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "mla.py:__call__:76",
+    "L3/attn:dsa"
+   ],
+   [
+    "transpose",
+    "language.py:__call__:751",
+    "L3/attn:dsa"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:751",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L3"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L3"
+   ]
+  ],
+  "ev_L4": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L4/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L4/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L4/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L4/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L4/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L4/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L4"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L4/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L4/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L4/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L4/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L4/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L4/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L4/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L4/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L4/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L4"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L4"
+   ]
+  ],
+  "ev_L44": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L44/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L44/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L44/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L44/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L44/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L44/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L44"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L44/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L44/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L44/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L44/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L44/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L44/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L44/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L44/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L44/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L44"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L44"
+   ]
+  ],
+  "build_s": 0.007709917001193389,
+  "totals": {
+   "eager_prims": 2228,
+   "compiled_calls": 158,
+   "metal_kernel_calls": 79,
+   "native_calls": 0,
+   "fast_calls": 135,
+   "runtime_dispatches": 2600
+  },
+  "per_layer_ops": {
+   "0": 59,
+   "1": 59,
+   "2": 59,
+   "3": 53,
+   "4": 59,
+   "5": 59,
+   "6": 59,
+   "7": 53,
+   "8": 59,
+   "9": 59,
+   "10": 59,
+   "11": 53,
+   "12": 59,
+   "13": 59,
+   "14": 59,
+   "15": 53,
+   "16": 59,
+   "17": 59,
+   "18": 59,
+   "19": 53,
+   "20": 59,
+   "21": 59,
+   "22": 59,
+   "23": 53,
+   "24": 59,
+   "25": 59,
+   "26": 59,
+   "27": 53,
+   "28": 59,
+   "29": 59,
+   "30": 59,
+   "31": 53,
+   "32": 59,
+   "33": 59,
+   "34": 59,
+   "35": 53,
+   "36": 59,
+   "37": 59,
+   "38": 59,
+   "39": 53,
+   "40": 59,
+   "41": 59,
+   "42": 59,
+   "43": 53,
+   "44": 59
+  },
+  "virtual_prims_from_compiled": 2601,
+  "virtual_prims_detail": {
+   "silu": {
+    "inner_prims": 2,
+    "calls_d256nb": 34
+   },
+   "_hc_expand_op": {
+    "inner_prims": 27,
+    "calls_d256nb": 45
+   },
+   "compute_g_safe": {
+    "inner_prims": 7,
+    "calls_d256nb": 34
+   },
+   "_ffn_block": {
+    "inner_prims": 24,
+    "calls_d256nb": 45
+   }
+  }
+ },
+ "d2560": {
+  "agg": {
+   "take": [
+    3,
+    1152,
+    178421760
+   ],
+   "dequantize": [
+    1,
+    4096,
+    1024
+   ],
+   "slice": [
+    432,
+    21717633,
+    24441345
+   ],
+   "broadcast_to": [
+    23,
+    11590144,
+    32289
+   ],
+   "contiguous": [
+    35,
+    2523136,
+    2523136
+   ],
+   "astype": [
+    339,
+    2714241,
+    2714241
+   ],
+   "flatten": [
+    45,
+    737280,
+    737280
+   ],
+   "fast:rms_norm": [
+    113,
+    948224,
+    0
+   ],
+   "transpose": [
+    78,
+    18100224,
+    18100224
+   ],
+   "matmul": [
+    56,
+    2488,
+    782336
+   ],
+   "kernel:hc_sinkhorn_collapse": [
+    45,
+    185220,
+    0
+   ],
+   "quantized_matmul": [
+    236,
+    2532960,
+    1365504
+   ],
+   "split": [
+    68,
+    1682048,
+    1682048
+   ],
+   "concatenate": [
+    101,
+    20060193,
+    0
+   ],
+   "conv1d": [
+    34,
+    835584,
+    3342336
+   ],
+   "compiled:silu": [
+    34,
+    0,
+    0
+   ],
+   "reshape": [
+    338,
+    2403840,
+    2403840
+   ],
+   "multiply": [
+    339,
+    2519776,
+    2245600
+   ],
+   "sum": [
+    68,
+    4352,
+    557056
+   ],
+   "add": [
+    190,
+    58723,
+    41805
+   ],
+   "rsqrt": [
+    102,
+    6528,
+    6528
+   ],
+   "sigmoid": [
+    68,
+    280704,
+    280704
+   ],
+   "compiled:compute_g_safe": [
+    34,
+    0,
+    0
+   ],
+   "kernel:gated_delta_step_vec": [
+    34,
+    35930112,
+    0
+   ],
+   "mean": [
+    35,
+    6272,
+    294912
+   ],
+   "compiled:_hc_expand_op": [
+    45,
+    0,
+    0
+   ],
+   "compiled:_ffn_block": [
+    45,
+    0,
+    0
+   ],
+   "expand_dims": [
+    11,
+    5632,
+    5632
+   ],
+   "zeros": [
+    77,
+    1441803,
+    0
+   ],
+   "slice_update": [
+    44,
+    8448,
+    15870976
+   ],
+   "fast:layer_norm": [
+    11,
+    1408,
+    0
+   ],
+   "swapaxes": [
+    11,
+    5767168,
+    5767168
+   ],
+   "full": [
+    22,
+    22,
+    0
+   ],
+   "ones": [
+    11,
+    11,
+    0
+   ],
+   "arange": [
+    44,
+    7128,
+    0
+   ],
+   "subtract": [
+    22,
+    7051,
+    7051
+   ],
+   "pad": [
+    22,
+    2906112,
+    45408
+   ],
+   "native:glm_moe_dsa:dsa_indexer_scores": [
+    11,
+    450560,
+    0
+   ],
+   "less": [
+    22,
+    7073,
+    7073
+   ],
+   "less_equal": [
+    11,
+    7040,
+    7040
+   ],
+   "bitwise_and": [
+    11,
+    7040,
+    7040
+   ],
+   "where": [
+    44,
+    52162,
+    29612
+   ],
+   "native:glm_moe_dsa:dsa_topk_indices": [
+    11,
+    5632,
+    0
+   ],
+   "take_along_axis": [
+    22,
+    11556864,
+    14430592
+   ],
+   "greater_equal": [
+    11,
+    22561,
+    22561
+   ],
+   "clip": [
+    11,
+    22561,
+    22561
+   ],
+   "depends": [
+    11,
+    15859712,
+    15859712
+   ],
+   "fast:scaled_dot_product_attention": [
+    11,
+    360448,
+    0
+   ]
+  },
+  "sites": {
+   "take|quantized.py:__call__:147": 1,
+   "take|quantized.py:__call__:148": 1,
+   "take|quantized.py:__call__:149": 1,
+   "dequantize|quantized.py:__call__:146": 1,
+   "slice|language.py:__call__:951": 1,
+   "broadcast_to|language.py:__call__:950": 1,
+   "contiguous|language.py:__call__:953": 1,
+   "astype|hyper_connection.py:__call__:275": 45,
+   "flatten|hyper_connection.py:__call__:276": 45,
+   "fast:rms_norm|hyper_connection.py:__call__:276": 45,
+   "transpose|hyper_connection.py:_mix:270": 45,
+   "matmul|hyper_connection.py:_mix:270": 45,
+   "kernel:hc_sinkhorn_collapse|hyper_connection.py:_hc_kernel:170": 45,
+   "fast:rms_norm|normalization.py:__call__:148": 68,
+   "quantized_matmul|linear.py:fused_quantized_matmul:105": 34,
+   "split|language.py:_fused_in_proj:260": 34,
+   "concatenate|language.py:__call__:274": 34,
+   "concatenate|language.py:__call__:291": 34,
+   "slice|language.py:__call__:305": 34,
+   "contiguous|language.py:__call__:305": 34,
+   "conv1d|convolution.py:__call__:78": 34,
+   "compiled:silu|language.py:__call__:306": 34,
+   "split|language.py:__call__:308": 34,
+   "reshape|language.py:__call__:309": 34,
+   "reshape|language.py:__call__:310": 34,
+   "reshape|language.py:__call__:311": 34,
+   "quantized_matmul|quantized.py:__call__:266": 180,
+   "reshape|language.py:__call__:314": 34,
+   "astype|language.py:__call__:324": 68,
+   "multiply|language.py:_l2norm:140": 136,
+   "sum|language.py:_l2norm:140": 68,
+   "add|language.py:_l2norm:140": 68,
+   "rsqrt|language.py:_l2norm:140": 68,
+   "multiply|language.py:__call__:324": 34,
+   "astype|language.py:__call__:325": 68,
+   "reshape|language.py:__call__:335": 34,
+   "reshape|language.py:__call__:336": 34,
+   "sigmoid|gated_delta.py:gated_delta_update:284": 34,
+   "compiled:compute_g_safe|gated_delta.py:gated_delta_update:288": 34,
+   "kernel:gated_delta_step_vec|gated_delta.py:gated_delta_kernel:206": 34,
+   "reshape|language.py:__call__:345": 34,
+   "astype|language.py:__call__:106": 34,
+   "multiply|language.py:__call__:107": 34,
+   "mean|language.py:__call__:107": 34,
+   "add|language.py:__call__:108": 34,
+   "rsqrt|language.py:__call__:108": 34,
+   "multiply|language.py:__call__:108": 34,
+   "astype|language.py:__call__:109": 34,
+   "multiply|language.py:__call__:109": 34,
+   "astype|language.py:__call__:110": 34,
+   "sigmoid|language.py:__call__:110": 34,
+   "multiply|language.py:__call__:110": 34,
+   "astype|language.py:__call__:111": 34,
+   "reshape|language.py:__call__:352": 34,
+   "compiled:_hc_expand_op|hyper_connection.py:hc_expand:311": 45,
+   "compiled:_ffn_block|language.py:__call__:908": 45,
+   "reshape|language.py:__call__:626": 11,
+   "transpose|language.py:__call__:626": 11,
+   "expand_dims|language.py:__call__:630": 11,
+   "zeros|language.py:__call__:636": 11,
+   "zeros|cache.py:update_and_fetch:517": 11,
+   "zeros|cache.py:update_and_fetch:518": 11,
+   "concatenate|cache.py:update_and_fetch:523": 11,
+   "concatenate|cache.py:update_and_fetch:524": 11,
+   "slice_update|cache.py:update_and_fetch:529": 11,
+   "slice_update|cache.py:update_and_fetch:530": 11,
+   "slice|cache.py:update_and_fetch:531": 22,
+   "reshape|language.py:__call__:458": 11,
+   "fast:layer_norm|normalization.py:__call__:115": 11,
+   "reshape|language.py:__call__:459": 11,
+   "swapaxes|language.py:__call__:460": 11,
+   "matmul|language.py:__call__:460": 11,
+   "slice|cache_extras.py:pooled:78": 44,
+   "slice_update|cache_extras.py:accumulate_windows:196": 11,
+   "slice_update|cache_extras.py:accumulate_windows:197": 11,
+   "zeros|cache_extras.py:accumulate_windows:205": 11,
+   "zeros|cache_extras.py:accumulate_windows:206": 11,
+   "zeros|language.py:_compress_windows:381": 11,
+   "full|language.py:__call__:482": 11,
+   "ones|language.py:__call__:483": 11,
+   "arange|language.py:__call__:499": 11,
+   "add|language.py:__call__:500": 11,
+   "multiply|language.py:__call__:500": 11,
+   "subtract|language.py:__call__:500": 11,
+   "full|language.py:__call__:504": 11,
+   "zeros|language.py:__call__:507": 11,
+   "slice|language.py:__call__:516": 11,
+   "slice|language.py:__call__:517": 11,
+   "multiply|language.py:__call__:518": 11,
+   "astype|language.py:__call__:518": 11,
+   "transpose|language.py:_native_scores:418": 11,
+   "slice|language.py:_native_scores:419": 11,
+   "pad|language.py:_native_scores:423": 11,
+   "pad|language.py:_native_scores:424": 11,
+   "native:glm_moe_dsa:dsa_indexer_scores|language.py:_native_scores:427": 11,
+   "slice|language.py:_native_scores:433": 11,
+   "slice|language.py:__call__:527": 22,
+   "arange|language.py:__call__:527": 11,
+   "add|language.py:__call__:527": 11,
+   "slice|language.py:__call__:529": 22,
+   "less|language.py:__call__:529": 11,
+   "slice|language.py:__call__:530": 22,
+   "less_equal|language.py:__call__:530": 11,
+   "bitwise_and|language.py:__call__:528": 11,
+   "where|language.py:__call__:531": 11,
+   "slice|language.py:_native_topk:451": 22,
+   "native:glm_moe_dsa:dsa_topk_indices|language.py:_native_topk:451": 11,
+   "take_along_axis|language.py:__call__:537": 11,
+   "slice|language.py:__call__:539": 11,
+   "multiply|language.py:__call__:539": 11,
+   "arange|language.py:__call__:540": 11,
+   "slice|language.py:__call__:540": 11,
+   "add|language.py:__call__:539": 22,
+   "slice|language.py:__call__:541": 11,
+   "reshape|language.py:__call__:543": 11,
+   "slice|language.py:__call__:545": 11,
+   "broadcast_to|language.py:__call__:544": 11,
+   "reshape|language.py:__call__:546": 11,
+   "where|language.py:__call__:547": 11,
+   "add|language.py:__call__:550": 11,
+   "add|language.py:__call__:551": 11,
+   "subtract|language.py:__call__:551": 11,
+   "arange|language.py:__call__:552": 11,
+   "slice|language.py:__call__:553": 11,
+   "add|language.py:__call__:553": 11,
+   "slice|language.py:__call__:554": 22,
+   "less|language.py:__call__:554": 11,
+   "slice|language.py:__call__:555": 11,
+   "add|language.py:__call__:555": 11,
+   "where|language.py:__call__:556": 11,
+   "concatenate|language.py:__call__:556": 11,
+   "slice|language.py:__call__:562": 11,
+   "slice|language.py:__call__:563": 22,
+   "where|language.py:__call__:563": 11,
+   "slice|language.py:__call__:566": 11,
+   "astype|language.py:__call__:566": 11,
+   "greater_equal|language.py:__call__:651": 11,
+   "slice|language.py:__call__:653": 11,
+   "clip|language.py:__call__:653": 11,
+   "slice|language.py:__call__:654": 11,
+   "broadcast_to|language.py:__call__:657": 11,
+   "take_along_axis|language.py:__call__:655": 11,
+   "slice|language.py:__call__:660": 22,
+   "slice|cache_extras.py:state:249": 11,
+   "slice|cache_extras.py:state:250": 11,
+   "depends|language.py:__call__:733": 11,
+   "quantized_matmul|mla.py:__call__:76": 22,
+   "fast:scaled_dot_product_attention|base.py:scaled_dot_product_attention:418": 11,
+   "transpose|language.py:__call__:751": 11,
+   "reshape|language.py:__call__:751": 11,
+   "mean|language.py:__call__:959": 1,
+   "slice|language.py:__call__:988": 1
+  },
+  "n_events": 3392,
+  "events_truncated": false,
+  "layer_ranges": {
+   "0": [
+    7,
+    66
+   ],
+   "1": [
+    66,
+    125
+   ],
+   "2": [
+    125,
+    184
+   ],
+   "3": [
+    184,
+    309
+   ],
+   "4": [
+    309,
+    368
+   ],
+   "5": [
+    368,
+    427
+   ],
+   "6": [
+    427,
+    486
+   ],
+   "7": [
+    486,
+    611
+   ],
+   "8": [
+    611,
+    670
+   ],
+   "9": [
+    670,
+    729
+   ],
+   "10": [
+    729,
+    788
+   ],
+   "11": [
+    788,
+    913
+   ],
+   "12": [
+    913,
+    972
+   ],
+   "13": [
+    972,
+    1031
+   ],
+   "14": [
+    1031,
+    1090
+   ],
+   "15": [
+    1090,
+    1215
+   ],
+   "16": [
+    1215,
+    1274
+   ],
+   "17": [
+    1274,
+    1333
+   ],
+   "18": [
+    1333,
+    1392
+   ],
+   "19": [
+    1392,
+    1517
+   ],
+   "20": [
+    1517,
+    1576
+   ],
+   "21": [
+    1576,
+    1635
+   ],
+   "22": [
+    1635,
+    1694
+   ],
+   "23": [
+    1694,
+    1819
+   ],
+   "24": [
+    1819,
+    1878
+   ],
+   "25": [
+    1878,
+    1937
+   ],
+   "26": [
+    1937,
+    1996
+   ],
+   "27": [
+    1996,
+    2121
+   ],
+   "28": [
+    2121,
+    2180
+   ],
+   "29": [
+    2180,
+    2239
+   ],
+   "30": [
+    2239,
+    2298
+   ],
+   "31": [
+    2298,
+    2423
+   ],
+   "32": [
+    2423,
+    2482
+   ],
+   "33": [
+    2482,
+    2541
+   ],
+   "34": [
+    2541,
+    2600
+   ],
+   "35": [
+    2600,
+    2725
+   ],
+   "36": [
+    2725,
+    2784
+   ],
+   "37": [
+    2784,
+    2843
+   ],
+   "38": [
+    2843,
+    2902
+   ],
+   "39": [
+    2902,
+    3027
+   ],
+   "40": [
+    3027,
+    3086
+   ],
+   "41": [
+    3086,
+    3145
+   ],
+   "42": [
+    3145,
+    3204
+   ],
+   "43": [
+    3204,
+    3329
+   ],
+   "44": [
+    3329,
+    3388
+   ]
+  },
+  "ev_L0": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L0/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L0/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L0/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L0/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L0/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L0/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L0"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L0/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L0/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L0/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L0/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L0/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L0/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L0/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L0/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L0/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L0/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L0/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L0/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L0/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L0"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L0"
+   ]
+  ],
+  "ev_L3": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L3/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L3/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L3/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L3/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L3/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L3/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:626",
+    "L3/attn:dsa"
+   ],
+   [
+    "transpose",
+    "language.py:__call__:626",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L3/attn:dsa"
+   ],
+   [
+    "expand_dims",
+    "language.py:__call__:630",
+    "L3/attn:dsa"
+   ],
+   [
+    "zeros",
+    "language.py:__call__:636",
+    "L3/attn:dsa"
+   ],
+   [
+    "zeros",
+    "cache.py:update_and_fetch:517",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "zeros",
+    "cache.py:update_and_fetch:518",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "concatenate",
+    "cache.py:update_and_fetch:523",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "concatenate",
+    "cache.py:update_and_fetch:524",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice_update",
+    "cache.py:update_and_fetch:529",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice_update",
+    "cache.py:update_and_fetch:530",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice",
+    "cache.py:update_and_fetch:531",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "slice",
+    "cache.py:update_and_fetch:531",
+    "L3/attn:dsa/kv_update"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:458",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "fast:layer_norm",
+    "normalization.py:__call__:115",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:459",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "swapaxes",
+    "language.py:__call__:460",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "matmul",
+    "language.py:__call__:460",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "slice_update",
+    "cache_extras.py:accumulate_windows:196",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "slice_update",
+    "cache_extras.py:accumulate_windows:197",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "cache_extras.py:accumulate_windows:205",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "cache_extras.py:accumulate_windows:206",
+    "L3/attn:dsa/indexer/pool_acc"
+   ],
+   [
+    "zeros",
+    "language.py:_compress_windows:381",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa/indexer/pool_fetch"
+   ],
+   [
+    "full",
+    "language.py:__call__:482",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "ones",
+    "language.py:__call__:483",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "arange",
+    "language.py:__call__:499",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:500",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:500",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "subtract",
+    "language.py:__call__:500",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "full",
+    "language.py:__call__:504",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "zeros",
+    "language.py:__call__:507",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:516",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:517",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:518",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "astype",
+    "language.py:__call__:518",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "transpose",
+    "language.py:_native_scores:418",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:_native_scores:419",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "pad",
+    "language.py:_native_scores:423",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "pad",
+    "language.py:_native_scores:424",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "native:glm_moe_dsa:dsa_indexer_scores",
+    "language.py:_native_scores:427",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:_native_scores:433",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:527",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "arange",
+    "language.py:__call__:527",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:527",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:527",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:529",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:529",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "less",
+    "language.py:__call__:529",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:530",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:530",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "less_equal",
+    "language.py:__call__:530",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "bitwise_and",
+    "language.py:__call__:528",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "where",
+    "language.py:__call__:531",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:_native_topk:451",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "native:glm_moe_dsa:dsa_topk_indices",
+    "language.py:_native_topk:451",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:_native_topk:451",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "take_along_axis",
+    "language.py:__call__:537",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:539",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:539",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "arange",
+    "language.py:__call__:540",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:540",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:539",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:541",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:539",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:543",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:545",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "broadcast_to",
+    "language.py:__call__:544",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:546",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "where",
+    "language.py:__call__:547",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:550",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:551",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "subtract",
+    "language.py:__call__:551",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "arange",
+    "language.py:__call__:552",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:553",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:553",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:554",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:554",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "less",
+    "language.py:__call__:554",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:555",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "add",
+    "language.py:__call__:555",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "where",
+    "language.py:__call__:556",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:556",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:562",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:563",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:563",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "where",
+    "language.py:__call__:563",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "slice",
+    "language.py:__call__:566",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "astype",
+    "language.py:__call__:566",
+    "L3/attn:dsa/indexer"
+   ],
+   [
+    "greater_equal",
+    "language.py:__call__:651",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "language.py:__call__:653",
+    "L3/attn:dsa"
+   ],
+   [
+    "clip",
+    "language.py:__call__:653",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "language.py:__call__:654",
+    "L3/attn:dsa"
+   ],
+   [
+    "broadcast_to",
+    "language.py:__call__:657",
+    "L3/attn:dsa"
+   ],
+   [
+    "take_along_axis",
+    "language.py:__call__:655",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "language.py:__call__:660",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "language.py:__call__:660",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:state:249",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:state:250",
+    "L3/attn:dsa"
+   ],
+   [
+    "slice",
+    "cache_extras.py:pooled:78",
+    "L3/attn:dsa"
+   ],
+   [
+    "depends",
+    "language.py:__call__:733",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "mla.py:__call__:76",
+    "L3/attn:dsa"
+   ],
+   [
+    "fast:scaled_dot_product_attention",
+    "base.py:scaled_dot_product_attention:418",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "mla.py:__call__:76",
+    "L3/attn:dsa"
+   ],
+   [
+    "transpose",
+    "language.py:__call__:751",
+    "L3/attn:dsa"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:751",
+    "L3/attn:dsa"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L3/attn:dsa"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L3"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L3"
+   ]
+  ],
+  "ev_L4": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L4/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L4/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L4/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L4/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L4/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L4/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L4"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L4/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L4/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L4/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L4/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L4/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L4/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L4/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L4/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L4/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L4/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L4/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L4/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L4/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L4"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L4"
+   ]
+  ],
+  "ev_L44": [
+   [
+    "astype",
+    "hyper_connection.py:__call__:275",
+    "L44/hc"
+   ],
+   [
+    "flatten",
+    "hyper_connection.py:__call__:276",
+    "L44/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "hyper_connection.py:__call__:276",
+    "L44/hc"
+   ],
+   [
+    "transpose",
+    "hyper_connection.py:_mix:270",
+    "L44/hc"
+   ],
+   [
+    "matmul",
+    "hyper_connection.py:_mix:270",
+    "L44/hc"
+   ],
+   [
+    "kernel:hc_sinkhorn_collapse",
+    "hyper_connection.py:_hc_kernel:170",
+    "L44/hc"
+   ],
+   [
+    "fast:rms_norm",
+    "normalization.py:__call__:148",
+    "L44"
+   ],
+   [
+    "quantized_matmul",
+    "linear.py:fused_quantized_matmul:105",
+    "L44/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:_fused_in_proj:260",
+    "L44/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:274",
+    "L44/attn:kda"
+   ],
+   [
+    "concatenate",
+    "language.py:__call__:291",
+    "L44/attn:kda"
+   ],
+   [
+    "slice",
+    "language.py:__call__:305",
+    "L44/attn:kda"
+   ],
+   [
+    "contiguous",
+    "language.py:__call__:305",
+    "L44/attn:kda"
+   ],
+   [
+    "conv1d",
+    "convolution.py:__call__:78",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:silu",
+    "language.py:__call__:306",
+    "L44/attn:kda"
+   ],
+   [
+    "split",
+    "language.py:__call__:308",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:309",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:310",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:311",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:314",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:324",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "sum",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "add",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "rsqrt",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "multiply",
+    "language.py:_l2norm:140",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:325",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:335",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:336",
+    "L44/attn:kda"
+   ],
+   [
+    "sigmoid",
+    "gated_delta.py:gated_delta_update:284",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:compute_g_safe",
+    "gated_delta.py:gated_delta_update:288",
+    "L44/attn:kda"
+   ],
+   [
+    "kernel:gated_delta_step_vec",
+    "gated_delta.py:gated_delta_kernel:206",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:345",
+    "L44/attn:kda"
+   ],
+   [
+    "astype",
+    "language.py:__call__:106",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:107",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "mean",
+    "language.py:__call__:107",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "add",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "rsqrt",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:108",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:109",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:109",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "sigmoid",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "multiply",
+    "language.py:__call__:110",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "astype",
+    "language.py:__call__:111",
+    "L44/attn:kda/o_norm"
+   ],
+   [
+    "reshape",
+    "language.py:__call__:352",
+    "L44/attn:kda"
+   ],
+   [
+    "quantized_matmul",
+    "quantized.py:__call__:266",
+    "L44/attn:kda"
+   ],
+   [
+    "compiled:_hc_expand_op",
+    "hyper_connection.py:hc_expand:311",
+    "L44"
+   ],
+   [
+    "compiled:_ffn_block",
+    "language.py:__call__:908",
+    "L44"
+   ]
+  ],
+  "build_s": 0.010258833004627377,
+  "totals": {
+   "eager_prims": 2998,
+   "compiled_calls": 158,
+   "metal_kernel_calls": 79,
+   "native_calls": 22,
+   "fast_calls": 135,
+   "runtime_dispatches": 3392
+  },
+  "per_layer_ops": {
+   "0": 59,
+   "1": 59,
+   "2": 59,
+   "3": 125,
+   "4": 59,
+   "5": 59,
+   "6": 59,
+   "7": 125,
+   "8": 59,
+   "9": 59,
+   "10": 59,
+   "11": 125,
+   "12": 59,
+   "13": 59,
+   "14": 59,
+   "15": 125,
+   "16": 59,
+   "17": 59,
+   "18": 59,
+   "19": 125,
+   "20": 59,
+   "21": 59,
+   "22": 59,
+   "23": 125,
+   "24": 59,
+   "25": 59,
+   "26": 59,
+   "27": 125,
+   "28": 59,
+   "29": 59,
+   "30": 59,
+   "31": 125,
+   "32": 59,
+   "33": 59,
+   "34": 59,
+   "35": 125,
+   "36": 59,
+   "37": 59,
+   "38": 59,
+   "39": 125,
+   "40": 59,
+   "41": 59,
+   "42": 59,
+   "43": 125,
+   "44": 59
+  },
+  "virtual_prims_from_compiled": 2601,
+  "virtual_prims_detail": {
+   "silu": {
+    "inner_prims": 2,
+    "calls_d2560": 34
+   },
+   "_hc_expand_op": {
+    "inner_prims": 27,
+    "calls_d2560": 45
+   },
+   "compute_g_safe": {
+    "inner_prims": 7,
+    "calls_d2560": 34
+   },
+   "_ffn_block": {
+    "inner_prims": 24,
+    "calls_d2560": 45
+   }
+  }
+ },
+ "compiled": {
+  "sigmoid": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "relu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "relu2": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "relu6": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "leaky_relu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "log_softmax": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "elu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "softmax": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "softplus": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "softsign": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "softshrink": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "celu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "silu": {
+   "shapeless": true,
+   "calls": 68,
+   "multiset": {
+    "sigmoid": [
+     1,
+     6291456,
+     6291456
+    ],
+    "multiply": [
+     1,
+     6291456,
+     6291456
+    ]
+   },
+   "perkey": {
+    "((1, 1, 24576), 'mlx.core.bfloat16')": 68
+   }
+  },
+  "log_sigmoid": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "gelu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "gelu_approx": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "gelu_fast_approx": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "step": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "selu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "prelu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "mish": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "hardswish": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "hard_tanh": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "hard_shrink": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "softmin": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "chunked_attention": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "ensure_fused_sdpa": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_apply_top_k": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_top_n_sigma": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "apply_p_less": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_apply_min_p": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "apply_top_p": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_typical_p": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "apply_xtc": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "categorical_sampling": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "swiglu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_compiled_eager_rope": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_selected_mrope_freqs": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_apply_selected_mrope_frequency_layout": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "compute_selected_mrope_cos_sin": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_apply_interleaved_rotary_pos_emb_axis1": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_prepare_assistant_mlp_input": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "apply_top_k": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "apply_min_p": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_hc_split_sinkhorn_ops": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_hc_expand_op": {
+   "shapeless": false,
+   "calls": 90,
+   "multiset": {
+    "slice": [
+     6,
+     11549700,
+     11549700
+    ],
+    "astype": [
+     9,
+     103845888,
+     103845888
+    ],
+    "multiply": [
+     3,
+     46153728,
+     11268
+    ],
+    "swapaxes": [
+     3,
+     45072,
+     45072
+    ],
+    "matmul": [
+     3,
+     46153728,
+     45072
+    ],
+    "add": [
+     3,
+     46153728,
+     46153728
+    ]
+   },
+   "perkey": {
+    "((1, 1, 4096), 'mlx.core.bfloat16') | ((1, 1, 4, 4096), 'mlx.core.bfloat16') | ((1, 1, 4), 'mlx.core.float32') | ((1, 1, 4, 4), 'mlx.core.float32')": 90
+   }
+  },
+  "_expert_select": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_vision_expert_select": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_hash_expert_select": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_vision_hash_expert_select": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_limited_swiglu": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_simple_compress_kv": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_overlap_compress_kv": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_split_softmax": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "precise_swiglu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "xielu": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "group_expert_select": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {
+    "astype": [
+     3,
+     811296,
+     811296
+    ],
+    "sigmoid": [
+     3,
+     811296,
+     811296
+    ],
+    "add": [
+     3,
+     811296,
+     811296
+    ],
+    "negative": [
+     3,
+     811296,
+     811296
+    ],
+    "argpartition": [
+     3,
+     811296,
+     811296
+    ],
+    "slice": [
+     3,
+     22536,
+     811296
+    ],
+    "take_along_axis": [
+     3,
+     22536,
+     811296
+    ],
+    "sum": [
+     3,
+     2817,
+     22536
+    ],
+    "divide": [
+     3,
+     22536,
+     22536
+    ],
+    "multiply": [
+     3,
+     22536,
+     22536
+    ]
+   },
+   "perkey": {}
+  },
+  "compute_g": {
+   "shapeless": true,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "compute_g_safe": {
+   "shapeless": true,
+   "calls": 68,
+   "multiset": {
+    "astype": [
+     1,
+     64,
+     64
+    ],
+    "exp": [
+     2,
+     2097216,
+     2097216
+    ],
+    "add": [
+     1,
+     2097152,
+     2097152
+    ],
+    "multiply": [
+     2,
+     4194304,
+     2097216
+    ],
+    "sigmoid": [
+     1,
+     2097152,
+     2097152
+    ]
+   },
+   "perkey": {
+    "((64, 1), 'mlx.core.float32') | ((1, 1, 64, 128), 'mlx.core.bfloat16') | ((64, 128), 'mlx.core.float32')": 68
+   }
+  },
+  "_gated_delta_step_ops": {
+   "shapeless": false,
+   "calls": 0,
+   "multiset": {},
+   "perkey": {}
+  },
+  "_ffn_block": {
+   "shapeless": false,
+   "calls": 90,
+   "multiset": {
+    "astype": [
+     4,
+     53248,
+     53248
+    ],
+    "flatten": [
+     1,
+     16384,
+     16384
+    ],
+    "fast:rms_norm": [
+     2,
+     20480,
+     0
+    ],
+    "transpose": [
+     1,
+     393216,
+     393216
+    ],
+    "matmul": [
+     2,
+     16408,
+     16400
+    ],
+    "kernel:hc_sinkhorn_collapse": [
+     1,
+     4116,
+     0
+    ],
+    "quantized_matmul": [
+     3,
+     28672,
+     20480
+    ],
+    "clip": [
+     2,
+     24576,
+     24576
+    ],
+    "sigmoid": [
+     1,
+     12288,
+     12288
+    ],
+    "multiply": [
+     3,
+     40960,
+     24580
+    ],
+    "slice": [
+     2,
+     4100,
+     4100
+    ],
+    "swapaxes": [
+     1,
+     16,
+     16
+    ],
+    "add": [
+     1,
+     16384,
+     16384
+    ]
+   },
+   "perkey": {
+    "((1, 1, 4, 4096), 'mlx.core.bfloat16')": 90
+   }
+  }
+ },
+ "eval_hits": [],
+ "nested_compile": [],
+ "dot": {
+  "d256nb": {
+   "Load": 3608,
+   "Gather": 88,
+   "Squeeze": 184,
+   "Quantize": 2,
+   "ExpandDims": 540,
+   "Broadcast": 1347,
+   "Contiguous": 36,
+   "AsType": 1152,
+   "Flatten": 545,
+   "RMSNorm": 403,
+   "Transpose": 517,
+   "Matmul": 495,
+   "Unflatten": 284,
+   "CustomKernel": 247,
+   "Full": 101,
+   "Concatenate": 271,
+   "QuantizedMatmul": 681,
+   "Split": 136,
+   "Slice": 150,
+   "Convolution": 68,
+   "CompiledSigmoidBroadcastBroadcastMultiply": 153,
+   "Reshape": 734,
+   "Multiply": 794,
+   "Sum": 351,
+   "Add": 255,
+   "Rsqrt": 203,
+   "CompiledExpAsTypeBroadcastBroadcastAddBroadcastBroadcastMultiplySigmoidBroadcastBroadcastMultiplyExp": 68,
+   "Sigmoid": 218,
+   "CompiledBroadcastAsTypeBroadcastMultiplyAddAsType": 178,
+   "CompiledBroadcastMinimumSigmoidMultiplyBroadcastMaximumBroadcastMinimumMultiply": 87,
+   "Minimum": 170,
+   "Maximum": 85,
+   "Max": 11,
+   "StopGradient": 11,
+   "Subtract": 11,
+   "Exp": 11,
+   "Divide": 52,
+   "LayerNorm": 11,
+   "Depends": 11,
+   "SliceUpdate": 11,
+   "Softmax": 22,
+   "Arange": 250,
+   "CompiledBroadcastAddNegative": 83,
+   "ArgPartition": 83,
+   "GatherQMM": 249,
+   "GatherAxis": 83,
+   "CompiledBroadcastDivideBroadcastMultiply": 83,
+   "CompiledAsTypeBroadcastMultiply": 42,
+   "CompiledAsTypeAdd": 42,
+   "GreaterEqual": 1,
+   "Select": 11,
+   "ArgSort": 82,
+   "GlmMoeWeightedSumPrimitive": 41
+  },
+  "d2560": {
+   "Load": 3674,
+   "Gather": 88,
+   "Squeeze": 338,
+   "Quantize": 2,
+   "ExpandDims": 1704,
+   "Broadcast": 3072,
+   "Contiguous": 1522,
+   "AsType": 1471,
+   "Flatten": 1346,
+   "RMSNorm": 403,
+   "Transpose": 1373,
+   "Matmul": 1274,
+   "Unflatten": 1096,
+   "CustomKernel": 258,
+   "Full": 189,
+   "Slice": 1216,
+   "Concatenate": 437,
+   "Qwen35QAffineQmmTPrimitive": 332,
+   "Split": 136,
+   "QuantizedMatmul": 437,
+   "Convolution": 68,
+   "CompiledSigmoidBroadcastBroadcastMultiply": 153,
+   "Reshape": 888,
+   "Multiply": 937,
+   "Sum": 351,
+   "Add": 739,
+   "Rsqrt": 203,
+   "CompiledExpAsTypeBroadcastBroadcastAddBroadcastBroadcastMultiplySigmoidBroadcastBroadcastMultiplyExp": 68,
+   "Sigmoid": 218,
+   "CompiledBroadcastAsTypeBroadcastMultiplyAddAsType": 178,
+   "CompiledBroadcastMinimumSigmoidMultiplyBroadcastMaximumBroadcastMinimumMultiply": 87,
+   "Minimum": 181,
+   "Maximum": 96,
+   "Arange": 469,
+   "Less": 132,
+   "Subtract": 99,
+   "LessEqual": 66,
+   "BitwiseAnd": 66,
+   "Pad": 22,
+   "Max": 11,
+   "StopGradient": 11,
+   "Exp": 11,
+   "Divide": 52,
+   "LayerNorm": 11,
+   "OMLXDSAIndexerScores": 66,
+   "Select": 275,
+   "OMLXDSATopKIndices": 66,
+   "GatherAxis": 160,
+   "Remainder": 66,
+   "GreaterEqual": 11,
+   "SliceUpdate": 11,
+   "Softmax": 11,
+   "CompiledBroadcastAddNegative": 83,
+   "ArgPartition": 83,
+   "GatherQMM": 249,
+   "CompiledBroadcastDivideBroadcastMultiply": 83,
+   "CompiledAsTypeBroadcastMultiply": 42,
+   "CompiledAsTypeAdd": 42,
+   "OMLXGlmDsaExactBlockAttention": 11,
+   "ArgSort": 82,
+   "GlmMoeWeightedSumPrimitive": 41
+  }
+ }
+}

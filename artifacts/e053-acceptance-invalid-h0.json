@@ -1,0 +1,430 @@
+{
+ "experiment": "E-053",
+ "date": "2026-09-25",
+ "target": "GLM-m48 via omlx :8008 (temp=0, max_tokens=64, stream)",
+ "drafter": "<studio-path> (1-layer MTP)",
+ "method": {
+  "server": "16 prompts, HTTP stream, text from stream deltas, token count + prompt token count from Chat completion log lines",
+  "drafter": "offline greedy 64 tokens; canonical MTP block (enorm/hnorm/eh_proj fusion, no HyperConnection); h_prev=0 (trunk offline), same tokenizer + chat template",
+  "scoring": "tokenize both texts with same tokenizer; positional agreement over min(len) positions"
+ },
+ "caveats": [
+  "drafter conditioned with h_prev=0 at prefill: pos-1 is a strict lower bound; with the trunk hidden, pos-1 agreement would be higher",
+  "server text retokenized for scoring (stream did not expose raw token ids); log token count used as cross-check (64/64 prompts = 64)"
+ ],
+ "results": {
+  "canonical_mtp_block": {
+   "per_prompt": [
+    {
+     "id": 1,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 2,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 3,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 4,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 5,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 6,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 7,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 8,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 9,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 10,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 11,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 12,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 13,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 14,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 15,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 16,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    }
+   ],
+   "summary": {
+    "variant": "canonical_mtp_block",
+    "pos1": 0.0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   }
+  },
+  "e025_scoring_recipe": {
+   "per_prompt": [
+    {
+     "id": 1,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 2,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 3,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 4,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 5,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 6,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 7,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 8,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 9,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 10,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 11,
+     "category": "chit-chat",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 12,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 13,
+     "category": "code",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 14,
+     "category": "summarization",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 15,
+     "category": "creative",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    },
+    {
+     "id": 16,
+     "category": "technical",
+     "n_server_tokens": 65,
+     "n_server_from_log": 64,
+     "pos1": 0,
+     "pos1_2": 0.0,
+     "agr_1_8": 0.0,
+     "agr_1_16": 0.0,
+     "agr_1_32": 0.0,
+     "agr_1_64": 0.0
+    }
+   ],
+   "summary": {
+    "variant": "e025_scoring_recipe",
+    "pos1": 0.0,
+    "pos1_2": 0.0,
+    "agr_1_8": 0.0,
+    "agr_1_16": 0.0,
+    "agr_1_32": 0.0,
+    "agr_1_64": 0.0
+   }
+  }
+ },
+ "verdict_rule": "pos2 >= 0.55 GO / 0.4-0.55 MARGINAL / <0.4 CLOSE-PATH-A (E-052)",
+ "pos2_primary": 0.0,
+ "VERDICT": "CLOSE-PATH-A"
+}
