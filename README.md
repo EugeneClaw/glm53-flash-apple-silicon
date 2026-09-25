@@ -50,6 +50,7 @@ limitations and BENCHMARKS.md for the honest numbers.
 
 ## What's in here
 
+- **[PROVENANCE.md](PROVENANCE.md)** — what is ours vs upstream vs vendored, exact environment, and per-feature rollback instructions.
 - **[LEDGER.md](LEDGER.md)** — the full experiment log (E-001…E-045): every hypothesis, measurement, verdict, and artifact reference. The interesting part is the *failed* experiments: two fusion programs (single-GEMM rewrite, fused norm kernels) were proven numerically perfect and 3–6× faster in isolation, yet **measurably neutral end-to-end** — the receipts explain why, and that explanation is the most valuable thing in this repo.
 - **[docs/METHOD.md](docs/METHOD.md)** — benchmark methodology (what invalidates a benchmark on this stack: prompt-cache reuse, powermetrics sampling windows, sync-instrumented timing, arm-ordering warmup… every one of these produced a false result we caught).
 - **[docs/DECODE.md](docs/DECODE.md)** — the decode investigation: kernel-chain latency analysis across three engines, MTP/speculative economics measured on-hardware, and the open paths.
