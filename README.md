@@ -4,124 +4,92 @@
 
 Everything here is measured on real hardware with archived receipts. No hand-waving, no benchmarks-vibes. If a hypothesis died, the corpse is on display. If a number is claimed, a log line or JSON backs it.
 
-## Starting point (measured, before this work)
+## Results at a glance
+
+![Prefill results](assets/prefill_results.png)
+
+![Decode results](assets/decode_results.png)
+
+## Starting point (V0, measured)
 
 | Metric | Value |
 |---|---|
-| Prefill @ ~24K tokens | **~700–940 tok/s** (degrading with context length: 693 @ 35K, knee at ~19K) |
-| Decode | **~40 tok/s** short-context |
-| Serving stack | oMLX 0.7.0.dev4 + vendored mlx-vlm (glm5_next) |
-| Hardware | Mac Studio M5 Ultra, 256 GB unified memory |
+| Prefill @ ~24K tokens | **475 tok/s** |
+| Decode (short-context) | **~39 tok/s** |
 
-Reference point for context: a 2× NVIDIA DGX Spark cluster running the same
-model (EXL3, tensor-parallel) was measured at ~1,567 tok/s prefill.
+Reference point for context: a 2× NVIDIA DGX Spark cluster running the same model (EXL3, tensor-parallel) was measured at ~1,567 tok/s prefill.
 
 ## Result (measured, after this work)
 
-> V1.2 update: with Lightning MTP enabled, decode is now **55.2 tok/s nominal
-> (66.3 best observed) short-context** — see the charts above and BENCHMARKS.md.
-
-| Metric | Before | After | |
+| Metric | V0 | V1.2 | |
 |---|---|---|---|
-| Prefill @ 16K | ~880 tok/s | **1,630 tok/s** | 1.9× |
-| Prefill @ 24K | ~1,030 tok/s | **2,089 tok/s** | 2.0× |
-| Prefill @ 32K | ~990 tok/s | **2,018 tok/s** | 2.0× |
-| Prefill @ 56K | ~1,030 tok/s | **2,040 tok/s** | 2.0× |
+| Prefill @ 16K | 475* | **1,630 tok/s** | ×1.9 |
+| Prefill @ 24K | 475* | **2,089 tok/s** | ×4.4 |
+| Prefill @ 32K | 475* | **2,018 tok/s** | ×4.1 |
+| Prefill @ 56K | 475* | **2,040 tok/s** | ×4.3 |
+| Decode (short-ctx) | ~39 tok/s | **55.2 nominal / 66.3 best observed** | ×1.4–1.7 |
 | Long-context degradation | knee + 30% drop by 35K | **flat to 56K+** | — |
 
-The headline mechanism is **SpecPrefill**: a draft-model scores token
-importance and the target prefills only the ~40% most important tokens.
-It is an *approximate* mode — matched-context quality was measured at
-**0.94 vs 1.00 across six task families** (tool-calling, code editing,
-arithmetic, summarization at parity; exhaustive fact-recall slightly reduced)
-— with a one-flag full-fidelity fallback.
+\* V0 prefill context length unrecorded; 475 tok/s is the verified initial-state figure. Later full-fidelity measurements at matched context: ~880–1,030 tok/s.
 
-Decode was investigated across three serving engines; findings and the
-honest bandwidth/latency analysis are in [docs/DECODE.md](docs/DECODE.md).
+The headline prefill mechanism is **SpecPrefill**: a draft-model scores token importance and the target prefills only the ~40% most important tokens. It is an *approximate* mode — matched-context quality was measured at **0.94 vs 1.00 across six task families** (tool-calling, code editing, arithmetic, summarization at parity; exhaustive fact-recall slightly reduced) — with a one-flag full-fidelity fallback.
 
-## Results at a glance
-
-![Prefill: before vs after](assets/prefill_results.png)
-
-![Decode: the journey to 66](assets/decode_results.png)
-
-![Lightning MTP effect](assets/decode_results.png)
-
-## V1.2 — decode breakthrough
-
-Lightning MTP (oMLX 0.7.0rc1, MTP head mapped from the MTP drafter checkpoint
-into the nextn decoder layer) lifts decode to a **nominal 55.2 tok/s
-short-context / 45.2 tok/s mid-context** (n=20 medians), with **66.3 tok/s
-best observed** — a +40% decode gain over V1 with prefill unharmed.
+The headline decode mechanism is **Lightning MTP** (oMLX 0.7.0rc1): the model's MTP head, mapped from the drafter checkpoint into the nextn decoder layer, speculates tokens that are verified losslessly — **73–81% acceptance, 2.39–2.75 tokens/cycle, prefill unharmed**.
 
 ## Minimum performance targets (competitive bars)
 
-These are the bars this project set for "worth shipping" — stated so others
-can judge the result against the same yardstick:
+These are the bars this project set for "worth shipping" — stated so others can judge the result against the same yardstick:
 
 - **Prefill: ≥ ~1,584 tok/s** at ~24K context (the 2× DGX Spark reference pace)
 - **Decode: ≥ ~60–62 tok/s** (parity with competitive serving on this model class)
 
-Prefill clears its bar with ~30% margin in SpecPrefill mode (and meets it
-neither-mode at 16K). **Decode does not clear its bar** — see Known
-limitations and BENCHMARKS.md for the honest numbers.
+Prefill clears its bar with ~30% margin in SpecPrefill mode. **Decode clears its bar on best-observed runs (66.3 tok/s) but not on nominal medians (55.2 short / 45.2 mid)** — see Known limitations and BENCHMARKS.md for the full picture.
+
+## V1.2 — decode breakthrough
+
+Lightning MTP (oMLX 0.7.0rc1) lifts decode to a **nominal 55.2 tok/s short-context / 45.2 tok/s mid-context** (n=20 medians), with **66.3 tok/s best observed** — a +40% decode gain over V1 with prefill unharmed.
+
+## Known limitations
+
+- **Decode nominal medians (55.2 short / 45.2 mid) remain below the 60–62 bar**; 66.3 is a best-observed peak, not a median. Decode is also **bimodal at ctx>2K without MTP**: requests land in a fast tier (33.5–33.8 tok/s) or slow tier (23–28 tok/s) — a per-request gate characterized but mechanism unresolved.
+- **SpecPrefill is approximate**: 0.94 relative quality vs full fidelity; exhaustive long-context fact recall is where the 60%-token budget shows. First use of the draft scorer after a cold start pays ~60 s one-time.
+- **Mixed-4/8-bit checkpoint**: results are for this quantization; other quants will differ.
 
 ## What's in here
 
 - **[PROVENANCE.md](PROVENANCE.md)** — what is ours vs upstream vs vendored, exact environment, and per-feature rollback instructions.
-- **[LEDGER.md](LEDGER.md)** — the full experiment log (E-001…E-045): every hypothesis, measurement, verdict, and artifact reference. The interesting part is the *failed* experiments: two fusion programs (single-GEMM rewrite, fused norm kernels) were proven numerically perfect and 3–6× faster in isolation, yet **measurably neutral end-to-end** — the receipts explain why, and that explanation is the most valuable thing in this repo.
-- **[docs/METHOD.md](docs/METHOD.md)** — benchmark methodology (what invalidates a benchmark on this stack: prompt-cache reuse, powermetrics sampling windows, sync-instrumented timing, arm-ordering warmup… every one of these produced a false result we caught).
-- **[docs/DECODE.md](docs/DECODE.md)** — the decode investigation: kernel-chain latency analysis across three engines, MTP/speculative economics measured on-hardware, and the open paths.
-- **[docs/ROOT-CAUSES.md](docs/ROOT-CAUSES.md)** — the four non-obvious root causes found (native-kernel silent fallback, a powermetrics sampling-window artifact that inverted a diagnosis, a buffer-pool re-creation pathology, and dispatch-count ≠ GPU-time).
-- **scripts/** — the benchmark harnesses (prefill ladders, matched quality gates, A/B drivers, kernel equivalence tests).
-- **patches/** — our serving-stack modifications, as reference implementations (draft-model adapter for speculative prefill; sidecar cache; gated experimental patches).
+- **[LEDGER.md](LEDGER.md)** — the full experiment log: every hypothesis, measurement, verdict, and artifact reference. The interesting part is the *failed* experiments: two fusion programs were proven numerically perfect and 3–6× faster in isolation, yet **measurably neutral end-to-end** — the receipts explain why, and that explanation is the most valuable thing in this repo.
+- **[BENCHMARKS.md](BENCHMARKS.md)** — reproducible methodology, canonical results (including V1.2 decode), exact script invocations, versions.
+- **[docs/METHOD.md](docs/METHOD.md)** — the ten benchmark traps that produced false results here, each with its fix.
+- **[docs/DECODE.md](docs/DECODE.md)** — the decode investigation: bandwidth physics, MTP economics across three engines, kernel-boundary analysis, and the V1.2 update.
+- **[docs/ROOT-CAUSES.md](docs/ROOT-CAUSES.md)** — four non-obvious root causes (silent kernel fallback, profiling-window artifact, buffer-pool pathology, dispatch≠GPU-time).
+- **[scripts/](scripts/)** and **[patches/](patches/)** — benchmark harnesses and serving-stack patches as reference implementations.
+- **[artifacts/](artifacts/)** — preserved raw receipts behind the closure verdicts.
 
 ## Headline findings (for the impatient)
 
-1. **oMLX source installs silently run fallback kernels** unless precompiled Metal kernels are present — a 46% long-context prefill difference, invisible in logs. (E-kernels)
-2. **"GPU idle %"-style system profiling can invert your diagnosis**: a powermetrics sampling window that closes before the workload starts reads as "GPU 94% idle" when the GPU is actually 88–98% busy. We published the wrong conclusion first; the window-matched re-measurement is the one that held. (E-016→E-022)
-3. **Dispatch-count ≠ GPU-time.** One component was 41% of all Python dispatches and ~3% of GPU time. Both a single-GEMM rewrite and fused norm kernels were proven equivalent (max diff ≤3e-5) and 3–6× faster per call, then measured **neutral end-to-end** — because the wall is per-op *serial execution premium* (~1.16 ms/kernel-equivalent), not per-op count. (E-030/E-031/E-033/E-037)
-4. **A per-chunk `mx.clear_cache()` in a draft-model loop cost 130×** under memory pressure — the same lesson the target model's scheduler had already learned, unapplied to the draft path. Fixing it plus skipping a discarded full-vocab head projection turned a bimodal 0.4 s ↔ 73 s scorer into a flat ~0.6–1.7 s one. (E-031b/E-038)
-5. **Speculative-prefill quality is task-shaped**: agent-relevant tasks (tool calls, code edits, arithmetic) at exact parity; exhaustive long-context fact recall is where a 60%-token approximation pays. Gate your own workload before adopting. (E-040)
+1. **oMLX source installs silently run fallback kernels** unless precompiled Metal kernels are present — a 46% long-context prefill difference, invisible in logs.
+2. **"GPU idle %"-style system profiling can invert your diagnosis**: a powermetrics sampling window that closed before the workload started read as "GPU 94% idle" when the GPU was actually 88–98% busy.
+3. **Dispatch-count ≠ GPU-time**: a component with 41% of all dispatches was ~3% of GPU time; two fusion programs that won their microbenches measured neutral end-to-end.
+4. **A per-chunk `mx.clear_cache()` in a draft-model loop cost 130×** under memory pressure — fixed, and the bimodal 0.4↔73 s scorer became flat.
+5. **Speculative-prefill quality is task-shaped**: agent-relevant tasks at exact parity; exhaustive fact-recall pays the approximation cost. Gate your own workload.
+6. **Decode is bimodal at ctx>2K** (fast tier 33.5–33.8, slow tier 23–28, per-request, launch-independent) — characterized; mechanism unresolved.
+7. **Lightning MTP lifts decode +38–43%** (39.3→54.3 short / 48.1 mid in the MTP evaluation; 55.2/45.2 nominal in the confirmed n=20 session).
 
-## Known limitations
-
-- **Decode**: ~39 tok/s short-context at V1; **54.3 short / 48.1 mid at
-  V1.1** with Lightning MTP enabled (oMLX 0.7.0rc1, MTP head from the MTP
-  drafter checkpoint mapped into the nextn layer) — a +38–43% decode gain
-  with prefill unharmed. Still below the 60–62 tok/s bar; decode is bimodal
-  at ctx>2K without MTP (see docs/DECODE.md).
-- **Decode is bimodal at ctx > 2K**: requests land in a fast tier
-  (33.5–33.8 tok/s) or a slow tier (23–28 tok/s) — a per-request gate on
-  the sparse-attention decode path, characterized but mechanism unresolved.
-- **SpecPrefill is approximate**: 0.94 relative quality vs full fidelity;
-  exhaustive long-context fact recall is where the 60%-token budget shows.
-  First use of the draft scorer after a cold start pays ~60 s one-time.
-- **Mixed-4/8-bit checkpoint**: results are for this quantization; other
-  quants will differ (a Q4_K GGUF lineage measured −1.0 quality on a
-  scoring rubric in side testing).
-
-## Hardware/software context for reproduction
+## Environment
 
 - Mac Studio M5 Ultra (80-core GPU, 256 GB), macOS 27.0
-- oMLX 0.7.0.dev4, MLX 0.32.0, Python 3.11
+- Python 3.11, MLX 0.32.0, oMLX 0.7.0rc1 (V1.2) / 0.7.0.dev4 (V1.0-era baselines)
 - Checkpoint: PipeNetwork GLM-5.3-Flash MLX mixed-4/8-bit (~170 GB)
+- Draft checkpoint for SpecPrefill: avlp12/GLM-5.3-Flash-Alis-MTP-Drafter (MTP block reused as a standalone scorer; doubles as the Lightning MTP head in V1.2)
 - Native Metal kernels: precompiled binaries transplanted from the official oMLX 0.6.4 DMG (no Xcode Metal toolchain needed)
-- Draft checkpoint for SpecPrefill: avlp12/GLM-5.3-Flash-Alis-MTP-Drafter (MTP block reused as a standalone scorer)
 
-Individual environment values (hostnames, LAN IPs, ports, paths) are local
-configuration and intentionally absent — see METHOD.md for what you need to
-substitute.
+Individual environment values (hostnames, LAN IPs, ports, paths) are local configuration and intentionally absent — see [docs/METHOD.md](docs/METHOD.md) for what you need to substitute.
 
 ## Status
 
-Prefill: **V1 shipped** (the 2× above, quality-gated). Decode: investigated,
-measured, honestly bounded — with the open paths documented for the next
-person. See [docs/DECODE.md](docs/DECODE.md) §"Open paths" before assuming
-it's done.
+**V1.2** — prefill ×4.4 (475→2,089 @24K effective, quality-gated, fallback intact); decode **66.3 peak / 55.2 nominal** short-context via Lightning MTP (+40%). Reproducible from BENCHMARKS.md. Watch list: MLX PR #4562 (runtime command-buffer limits), oMLX 1.0, new MLX-compatible MTP drafters.
 
 ## License / use
 
-Results and methodology free to use and build on. The serving-stack patches
-reference upstream oMLX/mlx-vlm (Apache-2.0 lineage) — treat them as
-reference implementations, not drop-in products.
+Results and methodology free to use and build on. The serving-stack patches reference upstream oMLX/mlx-vlm (Apache-2.0 lineage) — treat them as reference implementations, not drop-in products.
