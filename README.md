@@ -41,11 +41,11 @@ honest bandwidth/latency analysis are in [docs/DECODE.md](docs/DECODE.md).
 
 ## Results at a glance
 
-![Prefill: before vs after](assets/prefill_before_after.png)
+![Prefill: before vs after](assets/prefill_results.png)
 
-![Decode: the journey to 66](assets/decode_journey.png)
+![Decode: the journey to 66](assets/decode_results.png)
 
-![Lightning MTP effect](assets/decode_mtp_on_off.png)
+![Lightning MTP effect](assets/decode_results.png)
 
 ## V1.2 — decode breakthrough
 
