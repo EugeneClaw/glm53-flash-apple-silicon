@@ -6,6 +6,33 @@ investigation: what the physics says, what three engines measure, why the
 obvious lever (MTP) doesn't pay on this hardware today, and which paths
 remain open.
 
+## 0. UPDATE (V1.1): the decode picture moved
+
+Since this document was written (E-045 era), three things happened:
+
+1. **Decode bimodality discovered and characterized**: requests at ctx>2K land
+   in a fast tier (33.5–33.8 tok/s) or a slow tier (23–28 tok/s) — a
+   per-request gate on the sparse-attention decode path, launch-independent,
+   flip probability tracking recent context mix.
+2. **Command-buffer commit budget identified as the decode wall's companion**:
+   resident weights count toward MLX's 50-ops/50-MB commit budget, so batch-1
+   MoE decode commits after ~every expert matmul. Raising the static limits
+   (`MLX_MAX_OPS_PER_BUFFER=4000 MLX_MAX_MB_PER_BUFFER=1200`) measured
+   **+15.5% decode on both tiers and drove the slow-tier rate to 0** — but
+   costs 25–41% prefill, so it ships as a decode-priority profile, not the
+   default. (Upstream PR ml-explore/mlx#4562 proposes a runtime setter that
+   would allow per-phase limits in one server: watch it.)
+3. **Lightning MTP shipped upstream and WORKS**: oMLX 0.7.0rc1's Lightning MTP
+   (`mtp_enabled` on a checkpoint whose MTP head is stored as the nextn-style
+   extra layer) measured **54.3 tok/s short / 48.1 tok/s mid = +38–43%** over
+   the no-MTP baseline, with prefill unharmed, acceptance 73–81%, and
+   2.39–2.75 tokens/cycle on M5 Ultra.
+
+**V1.1 decode baseline: 54.3 short / 48.1 mid (Lightning MTP ON).** The
+sections below are retained because the bandwidth physics, the MTP-economics
+analysis, and the kernel-boundary findings all still govern what comes next —
+but the "measured baseline" numbers they quote are now historical.
+
 ## 1. The physics: bandwidth says ~100+ tok/s is possible
 
 Rough per-token read volume for GLM-5.3-Flash at mixed-4/8-bit:

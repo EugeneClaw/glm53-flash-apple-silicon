@@ -68,10 +68,11 @@ limitations and BENCHMARKS.md for the honest numbers.
 
 ## Known limitations
 
-- **Decode is below the 60–62 tok/s target**: ~39 tok/s short-context
-  (clean-state baseline), ~33.7 tok/s at ~9K context, ~31–32 at ~27K.
-  Measured across three serving engines; the bandwidth-physics ceiling and
-  the open paths are analyzed in [docs/DECODE.md](docs/DECODE.md).
+- **Decode**: ~39 tok/s short-context at V1; **54.3 short / 48.1 mid at
+  V1.1** with Lightning MTP enabled (oMLX 0.7.0rc1, MTP head from the MTP
+  drafter checkpoint mapped into the nextn layer) — a +38–43% decode gain
+  with prefill unharmed. Still below the 60–62 tok/s bar; decode is bimodal
+  at ctx>2K without MTP (see docs/DECODE.md).
 - **Decode is bimodal at ctx > 2K**: requests land in a fast tier
   (33.5–33.8 tok/s) or a slow tier (23–28 tok/s) — a per-request gate on
   the sparse-attention decode path, characterized but mechanism unresolved.

@@ -18,6 +18,22 @@ sync instrumentation, microbench timing floors — with the fixes, is in
 [docs/METHOD.md](docs/METHOD.md). Every methodological rule there exists
 because it once produced a false result we published to ourselves.
 
+## Decode (V1.1 — Lightning MTP)
+
+oMLX 0.7.0rc1 Lightning MTP (`mtp_enabled`), MTP head mapped from the MTP
+drafter checkpoint into the nextn layer. Streaming, temp 0, n=10 per cell,
+server-log ground truth:
+
+| Context | MTP off | **MTP on** | Δ |
+|---|---|---|---|
+| short (~577 tok) | 39.6 tok/s | **54.3 tok/s** | +37% |
+| mid (~9.1K tok) | 35.6 tok/s | **48.1 tok/s** | +35% |
+
+Acceptance 73–81%, 2.39–2.75 tokens/cycle, prefill TTFT within arm spread,
++1.4 GB RSS. Decode is bimodal without MTP (fast tier 33.5–33.8, slow tier
+23–28 at ctx>2K); MTP lifts both tiers.
+
+## Headline (V1 candidate)
 ## Headline (V1 candidate)
 
 | Metric | Full prefill (control) | SpecPrefill k=0.4 | Reference (2× NVIDIA DGX Spark, EXL3 TP) |
