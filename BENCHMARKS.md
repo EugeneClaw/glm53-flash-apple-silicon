@@ -33,6 +33,22 @@ Acceptance 73–81%, 2.39–2.75 tokens/cycle, prefill TTFT within arm spread,
 +1.4 GB RSS. Decode is bimodal without MTP (fast tier 33.5–33.8, slow tier
 23–28 at ctx>2K); MTP lifts both tiers.
 
+## Decode (V1.2 — Lightning MTP, confirmed at n=20)
+
+oMLX 0.7.0rc1 Lightning MTP (`mtp_enabled`), MTP head mapped from the MTP
+drafter checkpoint into the nextn decoder layer. Streaming, temp 0, n=20
+medians, paired salted prompts, server-log ground truth:
+
+| Context | MTP off | **MTP on (nominal)** |
+|---|---|---|
+| short (~0.6K tok) | 52.8 tok/s | **55.2 tok/s** |
+| mid (~9.1K tok) | 43.5 tok/s | **45.2 tok/s** |
+
+**Best observed: 66.3 tok/s** (short-context). Acceptance 73–81%, 2.39–2.75
+tokens/cycle, prefill TTFT within arm spread, +1.4 GB RSS. Nominal V1.1
+values reproduce across sessions (55.2 / 45.2 confirmed twice at n=20).
+
+## Headline (V1 candidate)
 ## Headline (V1 candidate)
 ## Headline (V1 candidate)
 

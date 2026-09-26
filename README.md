@@ -18,6 +18,9 @@ model (EXL3, tensor-parallel) was measured at ~1,567 tok/s prefill.
 
 ## Result (measured, after this work)
 
+> V1.2 update: with Lightning MTP enabled, decode is now **55.2 tok/s nominal
+> (66.3 best observed) short-context** — see the charts above and BENCHMARKS.md.
+
 | Metric | Before | After | |
 |---|---|---|---|
 | Prefill @ 16K | ~880 tok/s | **1,630 tok/s** | 1.9× |
@@ -35,6 +38,21 @@ arithmetic, summarization at parity; exhaustive fact-recall slightly reduced)
 
 Decode was investigated across three serving engines; findings and the
 honest bandwidth/latency analysis are in [docs/DECODE.md](docs/DECODE.md).
+
+## Results at a glance
+
+![Prefill: before vs after](assets/prefill_before_after.png)
+
+![Decode: the journey to 66](assets/decode_journey.png)
+
+![Lightning MTP effect](assets/decode_mtp_on_off.png)
+
+## V1.2 — decode breakthrough
+
+Lightning MTP (oMLX 0.7.0rc1, MTP head mapped from the MTP drafter checkpoint
+into the nextn decoder layer) lifts decode to a **nominal 55.2 tok/s
+short-context / 45.2 tok/s mid-context** (n=20 medians), with **66.3 tok/s
+best observed** — a +40% decode gain over V1 with prefill unharmed.
 
 ## Minimum performance targets (competitive bars)
 
